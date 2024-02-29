@@ -1,12 +1,12 @@
-import 'package:cine_stream/Home_Page/home_page.dart';
 import 'package:flutter/material.dart';
+// import 'loginPage.dart'; // assuming LoginPage is defined in a file named login_page.dart
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
