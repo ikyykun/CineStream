@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cine_stream/navbar.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -7,20 +6,58 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  int _selectedIndex =
-      2; //<- Contoh kita Berada Di Index 2 Yang mana Berisikan ProfilePage
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      if (index == 0) {
-        //buat nav ke 1
-      } else if (index == 1) {
-        //buat Nav ke 2
-      } else if (index == 2) {
-        //ini ProfilePage!
-      }
-    });
+ 
+  void _showPurchaseOptionsDialog() {
+    showDialog(
+      
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.black,
+        title: Text(
+          'Purchase Options',
+          style: TextStyle(color: Colors.purple),
+        ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Premium Per Mounth RP 30.000'),
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color.fromARGB(255, 19, 19, 19),
+                      ),
+                    ),
+                    SizedBox(height: 25,),
+                ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Premium Per Year RP 300.000'),
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color.fromARGB(255, 19, 19, 19),
+                      ),
+                    ),
+                    SizedBox(height: 25,),
+                ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Life Time RP 3,000.000'),
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color.fromARGB(255, 19, 19, 19),
+                      ),
+                    ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -103,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: _showPurchaseOptionsDialog,
                     icon: Icon(Icons.star, color: Colors.yellow),
                     label: Text('Premium User',
                         style: TextStyle(color: Colors.white)),
@@ -146,7 +183,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {},
-                        icon: Icon(Icons.exit_to_app, color: Colors.white),
+                        icon: Icon(Icons.arrow_forward_rounded,
+                            color: Colors.white),
                         label: Text('', style: TextStyle(color: Colors.white)),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.transparent,
@@ -169,20 +207,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.tv_outlined, color: Colors.white),
+                      Icon(Icons.mode_comment_outlined, color: Colors.white),
                       SizedBox(
                         width: 5,
                       ),
-                      Text('Video settings',
+                      Text('Audio And Laungages',
                           style: TextStyle(color: Colors.white)),
                     ],
                   ),
-                  SizedBox(width: 214),
+                  SizedBox(width: 165),
                   Row(
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {},
-                        icon: Icon(Icons.exit_to_app, color: Colors.white),
+                        icon: Icon(Icons.arrow_forward_rounded,
+                            color: Colors.white),
                         label: Text('', style: TextStyle(color: Colors.white)),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.transparent,
@@ -205,42 +244,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.mode_comment_outlined, color: Colors.white),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text('Audio And Laungages',
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                  SizedBox(width: 165),
-                  Row(
-                    children: [
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.exit_to_app, color: Colors.white),
-                        label: Text('', style: TextStyle(color: Colors.white)),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.transparent,
-                          elevation: 0,
-                          shadowColor: Colors.transparent,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              top: 0,
-              bottom: -450,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
                       Icon(Icons.person_remove, color: Colors.red),
                       SizedBox(
                         width: 5,
@@ -253,7 +256,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {},
-                        icon: Icon(Icons.exit_to_app, color: Colors.white),
+                        icon: Icon(Icons.arrow_forward_rounded,
+                            color: Colors.white),
                         label: Text('', style: TextStyle(color: Colors.white)),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.transparent,
@@ -268,10 +272,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: MyBottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
       ),
     );
   }
